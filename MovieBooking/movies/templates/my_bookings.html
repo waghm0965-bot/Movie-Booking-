@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Bookings</title>
+</head>
+
+<body>
+
+    <h1>🎟️ My Bookings</h1>
+
+    {% for booking in bookings %}
+
+    <div style="border:1px solid black;padding:10px;margin:10px;">
+
+        <h3>{{ booking.show.movie.title }}</h3>
+
+        <p>
+            <strong>Booking ID:</strong>
+            {{ booking.booking_id }}
+        </p>
+
+        <p>
+            <strong>Seat:</strong>
+            {{ booking.seat.seat_number }}
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            ₹{{ booking.show.price }}
+        </p>
+
+        <p>
+            <strong>Time:</strong>
+            {{ booking.show.show_time }}
+        </p>
+
+        <p style="color:green;">
+            ✅ Confirmed Booking
+        </p>
+
+    </div>
+
+    {% empty %}
+
+    <p>No bookings found.</p>
+
+    {% endfor %}
+
+</body>
+
+</html>

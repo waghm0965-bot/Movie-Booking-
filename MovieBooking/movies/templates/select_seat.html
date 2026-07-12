@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select Seats</title>
+</head>
+
+<body>
+
+    <h1>🎟️ Select Seats</h1>
+
+    <h2>{{ show.movie.title }}</h2>
+
+    <p>Show Time: {{ show.show_time }}</p>
+
+    <p>Price: ₹{{ show.price }}</p>
+
+    <hr>
+
+
+
+    <div style="text-align:center;">
+
+        <h2>🎬 SCREEN 🎬</h2>
+
+        <hr>
+
+        {% for seat in seats %}
+
+        {% if seat.is_booked %}
+
+        <button style="background:red;color:white;width:70px;height:50px;margin:5px;" disabled>
+            {{ seat.seat_number }}
+        </button>
+
+        {% else %}
+
+        <a href="{% url 'payment' seat.id %}">
+            <button style="background:green;color:white;width:70px;height:50px;margin:5px;">
+                {{ seat.seat_number }}
+            </button>
+        </a>
+
+        {% endif %}
+
+        {% if forloop.counter|divisibleby:5 %}
+        <br><br>
+        {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+
+
+    <br><br>
+
+    <a href="/">⬅ Back to Home</a>
+
+</body>
+
+</html>
